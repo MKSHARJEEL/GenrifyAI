@@ -209,5 +209,5 @@ if st.button("🔁 Reset"):
     # Use st.empty to clear the file uploader state
     st.file_uploader("📂 Upload a Word or PDF file", type=["pdf", "docx"], key="clear_file_uploader")
 
-    # Rerun the app to reset UI and state
+    #Rerun the app to reset UI and state
     st.rerun()
