@@ -16,9 +16,14 @@ import os
 from google.oauth2 import service_account
 import json
 
-# Retrieve credentials from Streamlit Cloud secrets
+SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
+
 credentials_json = json.loads(os.getenv("GOOGLE_CREDENTIALS"))
-credentials = service_account.Credentials.from_service_account_info(credentials_json)
+credentials = service_account.Credentials.from_service_account_info(
+    credentials_json,
+    scopes=SCOPES
+)
+
 
 # Google Sheets setup
 client = gspread.authorize(credentials)
