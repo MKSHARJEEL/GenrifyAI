@@ -105,16 +105,14 @@ if st.button("🔍 Predict"):
         st.warning("Please enter a book description.")
     else:
         st.session_state.description = description
-        x_input = vectorizer.transform([description])
-        # Assuming this part comes after the description input by the user
-x_input = vectorizer.transform([description])  # Transform input using the vectorizer
 
-# Now pass the transformed input to the model for prediction
-st.session_state.predicted_genre = model.predict(x_input)[0]  # Model prediction
+        # Transform the description input using the vectorizer
+        x_input = vectorizer.transform([description])  # This line is sufficient
 
-        st.session_state.predicted_genre = model.predict(x_input)[0]
+        # Now pass the transformed input to the model for prediction
+        st.session_state.predicted_genre = model.predict(x_input)[0]  # Model prediction
+
         confidence = model.predict_proba(x_input).max() * 100
-
         st.success(f"🎯 Predicted Genre: `{st.session_state.predicted_genre}` ({confidence:.1f}% confidence)")
 
         books_df['similarity'] = cosine_similarity(x_input, book_vectors).flatten()
@@ -129,6 +127,7 @@ st.session_state.predicted_genre = model.predict(x_input)[0]  # Model prediction
             for idx, row in recommended.iterrows():
                 st.session_state.book_titles.append(row["title"])
                 st.session_state.preferences.append("")
+
 
 # Show radio options only if books exist
 if st.session_state.book_titles:
