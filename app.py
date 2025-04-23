@@ -106,6 +106,12 @@ if st.button("🔍 Predict"):
     else:
         st.session_state.description = description
         x_input = vectorizer.transform([description])
+        # Assuming this part comes after the description input by the user
+x_input = vectorizer.transform([description])  # Transform input using the vectorizer
+
+# Now pass the transformed input to the model for prediction
+st.session_state.predicted_genre = model.predict(x_input)[0]  # Model prediction
+
         st.session_state.predicted_genre = model.predict(x_input)[0]
         confidence = model.predict_proba(x_input).max() * 100
 
