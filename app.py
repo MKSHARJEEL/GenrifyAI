@@ -32,7 +32,7 @@ client = gspread.authorize(credentials)
 sheet = client.open_by_key("1VS9EOMcn6SYjjOuhEr5axqfyJdg5ho1Un3btojDcoWc").sheet1
 
 # Load the saved Naive Bayes model and TF-IDF vectorizer for predictions
-model = joblib.load("naive_bayes_model.pkl")
+model = joblib.load("naïve_bayes_model.pkl")
 vectorizer = joblib.load("tfidf_vectorizer.pkl")
 
 # Check if the vectorizer is already fitted
