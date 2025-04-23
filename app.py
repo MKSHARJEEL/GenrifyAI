@@ -15,6 +15,8 @@ from docx import Document  # python-docx for Word
 import os
 from google.oauth2 import service_account
 import json
+from sklearn.exceptions import NotFittedError
+
 
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 
