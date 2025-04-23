@@ -35,15 +35,7 @@ sheet = client.open_by_key("1VS9EOMcn6SYjjOuhEr5axqfyJdg5ho1Un3btojDcoWc").sheet
 model = joblib.load("naïve_bayes_model.pkl")
 vectorizer = joblib.load("tfidf_vectorizer.pkl")
 
-# Check if the vectorizer is already fitted
-try:
-    vectorizer.transform(["test"])
-except NotFittedError:
-    # If not fitted, re-fit the vectorizer with training data
-    print("Vectorizer not fitted. Fitting now...")
-    X_train = ["your training data goes here"]  # Replace with actual data
-    vectorizer.fit(X_train)
-    joblib.dump(vectorizer, "tfidf_vectorizer.pkl")  # Save the fitted vectorizer again
+
     
 # Load the book dataset
 books_df = pd.read_csv("961.csv")
